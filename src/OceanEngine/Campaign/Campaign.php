@@ -100,6 +100,6 @@ class Campaign extends OceanEngine
             'opt_status' => $opt_status,
         ];
         return $this->required(['advertiser_id','campaign_ids', 'opt_status'])
-            ->request('open_api/2/campaign/update/', $payload, 'POST');
+            ->request('open_api/2/campaign/update/status/', $payload, 'POST');
     }
 }

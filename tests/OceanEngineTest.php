@@ -47,24 +47,9 @@ class OceanEngineTest extends TestCase
         // 替换应用中的缓存
         $app->rebind('cache', $cache);
 
-        // 获取账户日预算.
-        // $advertiser_ids = [505397556292476];
-        // $res = $app['account']->budget($advertiser_ids);
-        // dump($res);
-        
-
-        // 拉取广告组列表
         $advertiser_id = 505397556292476;
-        // $res = $app['campaign']->fields([
-        //         "id", "name", "budget", "budget_mode", "landing_type","status","modify_time"
-        //     ])->filter([
-        //         'status' => 'CAMPAIGN_STATUS_ALL',
-        //     ])->list($advertiser_id);
-
-        // 广告组数据表
-        $res = $app['campaign']->dateRange("2019-10-16", "2019-10-16")->filter([
-                'status' => 'CAMPAIGN_STATUS_ALL',
-            ])->list($advertiser_id, 1, 100);
+        $filter = ['status' => 'AD_STATUS_ALL',];
+        $res = $app['ad']->filter($filter)->list($advertiser_id, 1, 100);
 
         dump($res);
         

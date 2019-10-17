@@ -90,7 +90,7 @@ abstract class AccessToken implements AccessTokenInterface
         if (!$refresh && $token = $this->getCachedToken($this->tokenKey)) {
             return $token;
         }
-        
+
         /** @var array $token */
         $token = $this->requestToken($this->getCredentials(), true);
 
