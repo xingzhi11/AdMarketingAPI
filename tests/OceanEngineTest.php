@@ -10,9 +10,9 @@ class OceanEngineTest extends TestCase
     public function testStaticCall()
     {
         $config = [
-            'account_id' => xxxxxx,
-            'app_id' => xxxxx,
-            'secret' => xxxx,
+            'account_id' => 505397556292476,
+            'app_id' => 1644911720042510,
+            'secret' => '0a41de5d1f7f0109f1020574d2bfd6f9fbcb5201',
             'oauth' => [
                 /*
                  *

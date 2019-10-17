@@ -3,6 +3,7 @@
 namespace AdMarketingAPI\OceanEngine;
 
 use AdMarketingAPI\Kernel\BaseService;
+use AdMarketingAPI\Kernel\Exceptions\InvalidArgumentException;
 
 class OceanEngine extends BaseService
 {
@@ -25,6 +26,9 @@ class OceanEngine extends BaseService
             $this->app['config']->set('account_id', $palyload['advertiser_id']);
         }
         if (isset($palyload['advertiser_ids'])) {
+            if (count($palyload['advertiser_ids']) > 100) {
+                throw new InvalidArgumentException("The advertiser_ids may not have more than 100 items");
+            }
             $this->app['config']->set('account_id', $palyload['advertiser_ids'][0]);
         }
 

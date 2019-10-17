@@ -109,8 +109,6 @@ abstract class BaseService
         $palyload = $this->build($prepends);
         unset($palyload['required']);
 
-        dump($palyload);die;
-
         return 'GET' === $method ? $this->client->httpGet($endpoint, $palyload) :
             $this->client->httpPostJson($endpoint, $palyload);
     }

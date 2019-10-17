@@ -7,9 +7,9 @@ use AdMarketingAPI\OceanEngine\OceanEngine;
 class Ad extends OceanEngine
 {
     /**
-     * 获取广告组.
+     * 获取广告计划（新版）.
      *
-     * @see https://ad.oceanengine.com/openapi/doc/index.html?id=153
+     * @see https://ad.oceanengine.com/openapi/doc/index.html?id=154
      *
      * @param int $advertiser_id
      * @param int $page
@@ -25,7 +25,7 @@ class Ad extends OceanEngine
             'page_size' => $pageSize,
         ];
 
-        return $this->request('open_api/2/campaign/get/', $payload);
+        return $this->request('open_api/2/ad/get/', $payload);
     }
 
     /**
