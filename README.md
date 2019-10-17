@@ -9,11 +9,6 @@
 3. openssl 拓展
 4. fileinfo 拓展
 
-## Installation
-
-```shell
-$ composer require "overtrue/wechat:^4.2" -vvv
-```
 
 ## Usage 
 
