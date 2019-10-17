@@ -90,15 +90,9 @@ abstract class AccessToken implements AccessTokenInterface
         if (!$refresh && $token = $this->getCachedToken($this->tokenKey)) {
             return $token;
         }
-
-        $token = [
-            'access_token' => '24e17b60c7daa3dc20482306366573916a36a8eb',
-            'expires_in' => 86400,
-            'refresh_token' => '24e17b60c7daa3dc20482306366573916a36a8eb',
-            'refresh_token_expires_in' => 86400 * 30
-        ];
+        
         /** @var array $token */
-        // $token = $this->requestToken($this->getCredentials(), true);
+        $token = $this->requestToken($this->getCredentials(), true);
 
         // cache access token and refresh token
         $this->setToken($token);
