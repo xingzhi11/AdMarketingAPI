@@ -12,6 +12,11 @@
 
 ## Usage 
 
+## Installation
+
+```shell
+$ composer require "xingzhi/admarketingapi:^1.0" -vvv
+```
 
 **OceanEngine 今日头条**
 
