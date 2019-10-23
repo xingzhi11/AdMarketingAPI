@@ -39,7 +39,7 @@ class Account extends OceanEngine
     public function budget(array $advertiser_ids = [])
     {
         $payload = [
-            'advertiser_ids' => json_encode($advertiser_ids)
+            'advertiser_ids' => $advertiser_ids
         ];
 
         return $this->request('open_api/2/advertiser/budget/get/', $payload);
