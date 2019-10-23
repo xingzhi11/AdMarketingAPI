@@ -29,8 +29,8 @@ class OceanEngine extends BaseService
             if (count($palyload['advertiser_ids']) > 100) {
                 throw new InvalidArgumentException("The advertiser_ids may not have more than 100 items");
             }
-            $palyload['advertiser_ids'] = json_encode($palyload['advertiser_ids']);
             $this->app['config']->set('account_id', $palyload['advertiser_ids'][0]);
+            $palyload['advertiser_ids'] = json_encode($palyload['advertiser_ids']);
         }
 
         if (isset($palyload['filtering'])) {
@@ -56,7 +56,7 @@ class OceanEngine extends BaseService
             }
             $palyload['campaign_ids'] = json_encode($palyload['campaign_ids']);
         }
-        
+
         if (isset($palyload['ad_ids'])) {
             if (count($palyload['ad_ids']) > 100) {
                 throw new InvalidArgumentException("The ad_ids may not have more than 100 items");
