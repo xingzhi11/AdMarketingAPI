@@ -37,7 +37,8 @@ abstract class BaseService
 
     public function required(array $required = [])
     {
-        return $this->required = $required;
+        $this->required = $required;
+        return $this;
     }
 
     /**
