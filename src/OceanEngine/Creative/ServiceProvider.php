@@ -1,6 +1,6 @@
 <?php
 
-namespace AdMarketingAPI\OceanEngine\Ad;
+namespace AdMarketingAPI\OceanEngine\Creative;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
