@@ -5,7 +5,6 @@ namespace AdMarketingAPI\OceanEngine\OAuth;
 use AdMarketingAPI\Kernel\AccessToken;
 use AdMarketingAPI\Kernel\Contracts\AccessTokenInterface;
 use AdMarketingAPI\Kernel\Exceptions\RuntimeException;
-use AdMarketingAPI\Kernel\Exceptions\InvalidArgumentException;
 use Psr\Http\Message\RequestInterface;
 
 class OAuth extends AccessToken

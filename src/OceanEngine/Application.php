@@ -19,8 +19,8 @@ class Application extends ServiceContainer
         Account\ServiceProvider::class,
         Campaign\ServiceProvider::class,
         Ad\ServiceProvider::class,
-        // Creative\ServiceProvider::class,
-        // Tools\ServiceProvider::class,
+        Creative\ServiceProvider::class,
+        Tools\ServiceProvider::class,
         // DMP\ServiceProvider::class,
         // DPA\ServiceProvider::class,
     ];
