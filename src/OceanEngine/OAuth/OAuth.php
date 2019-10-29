@@ -21,6 +21,11 @@ class OAuth extends AccessToken
     protected $cachePrefix = 'admarketingapi.oceanengine.';
 
     /**
+     * @var string
+     */
+    protected $endpointToGetToken = "open_api/oauth2/access_token/";
+
+    /**
      * OceanEngine OAuth2.0 URL.
      *
      * @param string $state
@@ -79,7 +84,6 @@ class OAuth extends AccessToken
             } 
         } else {
             // get access token by auth_code
-            $this->endpointToGetToken = 'open_api/oauth2/access_token/';
             $credentials['auth_code'] = $auth_code;
         }
     
