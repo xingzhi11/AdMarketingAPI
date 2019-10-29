@@ -33,31 +33,31 @@ class OceanEngine extends BaseService
             $palyload['advertiser_ids'] = json_encode($palyload['advertiser_ids']);
         }
 
-        if (isset($palyload['filtering'])) {
+        if (!empty($palyload['filtering'])) {
             $palyload['filtering'] = json_encode($palyload['filtering']);
         }
-        if (isset($palyload['fields'])) {
+        if (!empty($palyload['fields'])) {
             $palyload['fields'] = json_encode($palyload['fields']);
         }
-        if (isset($palyload['group_by'])) {
+        if (!empty($palyload['group_by'])) {
             $palyload['group_by'] = json_encode($palyload['group_by']);
         }
         
-        if (isset($palyload['creative_ids'])) {
+        if (!empty($palyload['creative_ids'])) {
             if (count($palyload['creative_ids']) > 100) {
                 throw new InvalidArgumentException("The creative_ids may not have more than 100 items");
             }
             $palyload['creative_ids'] = json_encode($palyload['creative_ids']);
         }
 
-        if (isset($palyload['campaign_ids'])) {
+        if (!empty($palyload['campaign_ids'])) {
             if (count($palyload['campaign_ids']) > 100) {
                 throw new InvalidArgumentException("The campaign_ids may not have more than 100 items");
             }
             $palyload['campaign_ids'] = json_encode($palyload['campaign_ids']);
         }
 
-        if (isset($palyload['ad_ids'])) {
+        if (!empty($palyload['ad_ids'])) {
             if (count($palyload['ad_ids']) > 100) {
                 throw new InvalidArgumentException("The ad_ids may not have more than 100 items");
             }
