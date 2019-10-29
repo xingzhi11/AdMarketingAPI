@@ -56,15 +56,24 @@ class Creative extends OceanEngine
      * @param int $advertiser_id
      * @param int $page
      * @param int $pageSize
+     * @param string $time_granularity
      *
      * @return array
      */
-    public function report(int $advertiser_id, int $page = 1, int $pageSize = 20)
+    public function report(int $advertiser_id, int $page = 1, int $pageSize = 20, string $time_granularity= "STAT_TIME_GRANULARITY_HOURLY")
     {
         $payload = [
             'advertiser_id' => $advertiser_id,
             'page' => $page,
             'page_size' => $pageSize,
+            'time_granularity' => $time_granularity,
+            'group_by' => [
+                "STAT_GROUP_BY_FIELD_ID",
+                "STAT_GROUP_BY_FIELD_STAT_TIME"
+            ],
+            'filtering' => [
+                'status' => 'CREATIVE_STATUS_ALL',
+            ]
         ];
 
         return $this->required(['start_date','end_date'])

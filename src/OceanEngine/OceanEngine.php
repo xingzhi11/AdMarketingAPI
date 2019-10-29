@@ -7,11 +7,6 @@ use AdMarketingAPI\Kernel\Exceptions\InvalidArgumentException;
 
 class OceanEngine extends BaseService
 {
-    public function order()
-    {
-        
-    }
-
     /**
      * Palyload build.
      *

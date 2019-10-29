@@ -91,8 +91,11 @@ abstract class BaseService
         return $this;
     }
 
-    public function groupBy()
+    public function groupBy(array $group = [])
     {
+        $this->group_by = $group;
+
+        return $this;
     }
 
     /**
