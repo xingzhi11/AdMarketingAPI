@@ -10,8 +10,7 @@ use PHPUnit\Framework\TestCase as BaseTestCase;
  * class TestCase.
  */
 class TestCase extends BaseTestCase
-{
-    
+{   
     /**
      * Create API Client mock object.
      *

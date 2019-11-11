@@ -4,6 +4,7 @@ namespace AdMarketingAPI\Kernel;
 
 use AdMarketingAPI\Kernel\Supports\Traits\HasAttributes;
 use AdMarketingAPI\Kernel\Exceptions\InvalidArgumentException;
+use AdMarketingAPI\Kernel\Exceptions\HttpException;
 
 abstract class BaseService
 {
@@ -115,6 +116,32 @@ abstract class BaseService
 
         return 'GET' === $method ? $this->client->httpGet($endpoint, $palyload) :
             $this->client->httpPostJson($endpoint, $palyload);
+    }
+
+    public function curlFile($url, $token, $postData)
+    {
+        $headers = [
+            "Access-Token:{$token}"
+        ];
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 3);
+        $output = curl_exec($ch);
+        curl_close($ch);
+        $result = json_decode($output, true);
+        if (!isset($result['code']) || $result['code'] != 0) {
+            throw new HttpException(
+                "Request [{$url}] fail:".json_encode($result,JSON_UNESCAPED_UNICODE),
+                null,
+                $result
+            );
+        }
+        return $result['data'];
     }
 
     abstract protected function build(array $prepends = []): array;

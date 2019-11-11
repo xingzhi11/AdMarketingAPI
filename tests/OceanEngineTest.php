@@ -7,12 +7,12 @@ use Symfony\Component\Cache\Simple\RedisCache;
 
 class OceanEngineTest extends TestCase
 {
-    public function testStaticCall()
+    public function app()
     {
         $config = [
-            'account_id' => 505397556292476,
-            'app_id' => 1644911720042510,
-            'secret' => '0a41de5d1f7f0109f1020574d2bfd6f9fbcb5201',
+            'account_id' => "account_id",
+            'app_id' => "xxxxxx",
+            'secret' => "xxxxxxxxxxxxxxxxx",
             'oauth' => [
                 /*
                  *
@@ -36,8 +36,9 @@ class OceanEngineTest extends TestCase
                 'connect_timeout' => 5.0,
                 // 更多配置项请参考 [Guzzle](https://guzzle-cn.readthedocs.io/zh_CN/latest/request-options.html)
             ],
-            'mode' => 'dev',
+            'mode' => 'normal',
         ];
+       
         $app = Factory::oceanEngine($config);
 
         $redis = new \Redis();
@@ -47,15 +48,6 @@ class OceanEngineTest extends TestCase
         // 替换应用中的缓存
         $app->rebind('cache', $cache);
 
-        $advertiser_id = 505397556292476;
-        $filter = ['status' => 'AD_STATUS_ALL',];
-        $res = $app['ad']->filter($filter)->list($advertiser_id, 1, 100);
-
-        dump($res);
-        
-        
-        die;
-
-        // $this->assertInstanceOf(\EasyAdm\OceanEngine\Application::class, $oceanEngine);
+        return $app;
     }
 }

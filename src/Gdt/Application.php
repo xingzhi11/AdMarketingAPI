@@ -1,13 +1,13 @@
 <?php
 
-namespace AdMarketingAPI\OceanEngine;
+namespace AdMarketingAPI\Gdt;
 
 use AdMarketingAPI\Kernel\ServiceContainer;
 
 /**
  * Class Application.
  *
- * @property \EasyAdm\OceanEngine\Auth\AccessToken              $access_token
+ * @property \EasyAdm\Gdt\Auth\AccessToken              $access_token
  */
 class Application extends ServiceContainer
 {
@@ -15,13 +15,13 @@ class Application extends ServiceContainer
      * @var array
      */
     protected $providers = [
-        OAuth\ServiceProvider::class,
-        Account\ServiceProvider::class,
-        Campaign\ServiceProvider::class,
-        Ad\ServiceProvider::class,
-        Creative\ServiceProvider::class,
-        Tools\ServiceProvider::class,
-        DMP\ServiceProvider::class,
+        // OAuth\ServiceProvider::class,
+        // Account\ServiceProvider::class,
+        // Campaign\ServiceProvider::class,
+        // Ad\ServiceProvider::class,
+        // Creative\ServiceProvider::class,
+        // Tools\ServiceProvider::class,
+        // DMP\ServiceProvider::class,
         // DPA\ServiceProvider::class,
     ];
 
