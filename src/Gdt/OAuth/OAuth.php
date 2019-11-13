@@ -95,8 +95,8 @@ class OAuth extends AccessToken
      */
     protected function setToken(array $token): AccessTokenInterface
     {
-        if (!empty($token['advertiser_id'])) {
-            $this->app['config']->set('account_id', $token['advertiser_id']);
+        if (!empty($token['authorizer_info']['account_id'])) {
+            $this->app['config']->set('account_id', $token['authorizer_info']['account_id']);
         }
         $cache = $this->getCache();
         // access token
@@ -104,46 +104,24 @@ class OAuth extends AccessToken
        
         $cache->set($accessTokenKey, [
             $this->tokenKey => $token['access_token'],
-            'expires_in' => $token['expires_in'],
-        ], $token['expires_in'] - $this->safeSeconds);
+            'expires_in' => $token['access_token_expires_in'],
+        ], $token['access_token_expires_in'] - $this->safeSeconds);
 
         if (!$cache->has($accessTokenKey)) {
             throw new RuntimeException('Failed to cache access token.');
         }
+        if (!empty($token['refresh_token'])) {
+            // refresh token
+            $refreshTokenKey = $this->getCacheKey('refresh_token');
+            $cache->set($refreshTokenKey, [
+                'refresh_token' => $token['refresh_token'],
+                'expires_in' => $token['refresh_token_expires_in'],
+            ], $token['refresh_token_expires_in'] - $this->safeSeconds);
 
-        // refresh token
-        $refreshTokenKey = $this->getCacheKey('refresh_token');
-        $cache->set($refreshTokenKey, [
-            'refresh_token' => $token['refresh_token'],
-            'expires_in' => $token['refresh_token_expires_in'],
-        ], $token['refresh_token_expires_in'] - $this->safeSeconds);
-
-        if (!$cache->has($refreshTokenKey)) {
-            throw new RuntimeException('Failed to cache refresh token.');
+            if (!$cache->has($refreshTokenKey)) {
+                throw new RuntimeException('Failed to cache refresh token.');
+            }
         }
-
         return $this;
-    }
-
-    /**
-     * @param \Psr\Http\Message\RequestInterface $request
-     * @param array                              $requestOptions
-     *
-     * @return \Psr\Http\Message\RequestInterface
-     *
-     * @throws \AdMarketingAPI\Kernel\Exceptions\HttpException
-     * @throws \Psr\SimpleCache\InvalidArgumentException
-     * @throws \AdMarketingAPI\Kernel\Exceptions\InvalidConfigException
-     * @throws \AdMarketingAPI\Kernel\Exceptions\InvalidArgumentException
-     * @throws \AdMarketingAPI\Kernel\Exceptions\RuntimeException
-     */
-    public function applyToRequest(RequestInterface $request, array $requestOptions = []): RequestInterface
-    {
-        parse_str($request->getUri()->getQuery(), $query);
-        $token = $this->getToken()[$this->tokenKey];
-        $query = http_build_query($query);
-        return $request->withHeader('Access-Token', $token)
-                        ->withHeader('Content-Type', "application/json")
-                        ->withUri($request->getUri()->withQuery($query));
     }
 }
