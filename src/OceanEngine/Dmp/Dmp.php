@@ -57,12 +57,12 @@ class Dmp extends OceanEngine
      * @see https://ad.oceanengine.com/openapi/doc/index.html?id=75
      * 
      * @param int $advertiser_id
-     * @param int $data_source_id
+     * @param string $data_source_id
      * @param array $payload
      * 
      * @return array
      */
-    public function dataSourceUpdate(int $advertiser_id, int $data_source_id, array $payload)
+    public function dataSourceUpdate(int $advertiser_id, string $data_source_id, array $payload)
     {
         $payload['advertiser_id'] = $advertiser_id;
         $payload['data_source_id'] = $data_source_id;
