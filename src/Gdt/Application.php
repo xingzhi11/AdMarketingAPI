@@ -15,14 +15,8 @@ class Application extends ServiceContainer
      * @var array
      */
     protected $providers = [
-        // OAuth\ServiceProvider::class,
-        // Account\ServiceProvider::class,
-        // Campaign\ServiceProvider::class,
-        // Ad\ServiceProvider::class,
-        // Creative\ServiceProvider::class,
-        // Tools\ServiceProvider::class,
-        // DMP\ServiceProvider::class,
-        // DPA\ServiceProvider::class,
+        OAuth\ServiceProvider::class,
+        DMP\ServiceProvider::class,
     ];
 
     /**
@@ -39,8 +33,8 @@ class Application extends ServiceContainer
      * Const url.
      */
     const URL = [
-        self::MODE_NORMAL => 'https://ad.toutiao.com/',
-        self::MODE_DEV => 'https://test-ad.toutiao.com/',
+        self::MODE_NORMAL => 'https://api.e.qq.com/v1.1/',
+        self::MODE_DEV => 'https://sandbox-api.e.qq.com/v1.1/',
     ];
 
     public function __construct(array $config = [], array $prepends = [])

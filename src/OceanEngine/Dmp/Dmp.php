@@ -4,8 +4,6 @@ namespace AdMarketingAPI\OceanEngine\Dmp;
 
 use AdMarketingAPI\OceanEngine\OceanEngine;
 
-use function GuzzleHttp\json_encode;
-
 class Dmp extends OceanEngine
 {
     /**
