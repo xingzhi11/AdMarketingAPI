@@ -21,7 +21,7 @@ class Application extends ServiceContainer
         Ad\ServiceProvider::class,
         Creative\ServiceProvider::class,
         Tools\ServiceProvider::class,
-        DMP\ServiceProvider::class,
+        Dmp\ServiceProvider::class,
         // DPA\ServiceProvider::class,
     ];
 

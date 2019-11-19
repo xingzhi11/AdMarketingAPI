@@ -16,7 +16,7 @@ class Application extends ServiceContainer
      */
     protected $providers = [
         OAuth\ServiceProvider::class,
-        DMP\ServiceProvider::class,
+        Dmp\ServiceProvider::class,
     ];
 
     /**
