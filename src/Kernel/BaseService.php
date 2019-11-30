@@ -130,13 +130,14 @@ abstract class BaseService
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 3);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 600);
         $output = curl_exec($ch);
+        $error = curl_error($ch);
         curl_close($ch);
         $result = json_decode($output, true);
         if (!isset($result['code']) || $result['code'] != 0) {
             throw new HttpException(
-                "Request [{$url}] fail:".json_encode($result,JSON_UNESCAPED_UNICODE),
+                "Request [{$url}] curl [{$error}] fail:".json_encode($result,JSON_UNESCAPED_UNICODE),
                 null,
                 $result
             );
